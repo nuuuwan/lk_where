@@ -60,7 +60,7 @@ export default function GameInfoPanel({
       <Instruction>
         {isGuessed
           ? "Loading next place..."
-          : "Navigate to the center of this place and click the map or move the target to your best guess."}
+          : "Lock in on this location - pan the map and place your marker."}
       </Instruction>
       {guessedLocation && !isGuessed && (
         <Button onClick={onSubmit}>Submit Guess</Button>
