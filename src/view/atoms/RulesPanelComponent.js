@@ -60,35 +60,21 @@ export default function RulesPanel_Component({ onStart }) {
   return (
     <RulesPanelContainerStyled>
       <RulesPanel>
-        <RulesTitle>🎯 LK Where - Game Rules</RulesTitle>
+        <RulesTitle>🇱🇰 LK Where</RulesTitle>
         <RulesList>
           <li>
-            You have a <strong>{INITIAL_TRAVEL_BUDGET} km travel budget</strong>{" "}
-            to guess as many cities as you can.
+            You have <strong>{INITIAL_TRAVEL_BUDGET} km</strong> to spend.
           </li>
-          <li>A random place name will appear at the top of the screen.</li>
+          <li>A place name appears - lock in your guess on the map.</li>
           <li>
-            Navigate the map and position the <strong>target</strong> at the
-            center of the place.
-          </li>
-          <li>Click the map or move the target to your best guess location.</li>
-          <li>
-            Click <strong>Submit Guess</strong> to reveal the distance between
-            your guess and the actual location.
+            Submit to see how far off you were.{" "}
+            <strong>Closer = more km left.</strong>
           </li>
           <li>
-            Each correct guess earns you <strong>1 point</strong>.
-          </li>
-          <li>When your travel budget runs out, the game ends.</li>
-          <li>
-            Try to maximize your score before the travel budget is exhausted!
+            <strong>1 point</strong> per guess.
           </li>
         </RulesList>
-        <RulesText>
-          <strong>Tip:</strong> The closer your guess to the actual location,
-          the less travel budget is used, leaving more chances to guess other
-          cities!
-        </RulesText>
+
         <Button onClick={onStart}>Start Game</Button>
       </RulesPanel>
     </RulesPanelContainerStyled>

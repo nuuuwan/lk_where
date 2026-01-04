@@ -15,7 +15,7 @@ const ScoreWidgetContainer = styled(Paper)`
 `;
 
 const Label = styled(Typography)`
-  font-size: 12px;
+  font-size: 10px;
   color: #999;
   font-weight: 600;
   text-transform: uppercase;
@@ -24,7 +24,7 @@ const Label = styled(Typography)`
 `;
 
 const Value = styled(Typography)`
-  font-size: 48px;
+  font-size: 56px;
   font-weight: 900;
   color: #1a1a1a;
   font-family: "Fira Mono", monospace;
