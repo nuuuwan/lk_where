@@ -76,15 +76,31 @@ export default function GameMap({
         )}
         {/* Draw line between guessed and actual locations with distance label */}
         {isGuessed && guessedLocation && currentCity && distance !== null && (
-          <Polyline
-            positions={[guessedLocation, currentCity.lat_lng]}
-            color="#ef5350"
-            weight={2}
-            opacity={0.7}
-            dashArray="5, 5"
-          >
-            <Popup>Distance: {distance.toFixed(2)} km</Popup>
-          </Polyline>
+          <>
+            <Polyline
+              positions={[guessedLocation, currentCity.lat_lng]}
+              color="#ef5350"
+              weight={2}
+              opacity={0.7}
+              dashArray="5, 5"
+            >
+              <Popup>Distance: {distance.toFixed(2)} km</Popup>
+            </Polyline>
+            {/* Distance label at midpoint */}
+            <Marker
+              position={[
+                (guessedLocation[0] + currentCity.lat_lng[0]) / 2,
+                (guessedLocation[1] + currentCity.lat_lng[1]) / 2,
+              ]}
+              icon={L.divIcon({
+                html: `<div style="background: white; padding: 4px 8px; border-radius: 4px; border: 1px solid #ef5350; font-family: 'Fira Mono', monospace; font-size: 12px; font-weight: 600; color: #ef5350; white-space: nowrap; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">${Math.round(
+                  distance
+                )} km</div>`,
+                className: "distance-label",
+                iconSize: null,
+              })}
+            />
+          </>
         )}
         <MapUpdater onMapMove={onMapMove} isGuessed={isGuessed} />
       </MapContainer>
