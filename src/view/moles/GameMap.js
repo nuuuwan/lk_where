@@ -59,8 +59,8 @@ export default function GameMap({
         <TileLayer
           attribution='&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://tiles.stadiamaps.com/tiles/stamen_terrain_background/{z}/{x}/{y}{r}.png"
-          minZoom={7}
-          maxZoom={10}
+          minZoom={8}
+          maxZoom={8}
         />
         {/* Show guessed location marker in red after guess */}
         {isGuessed && guessedLocation && (
