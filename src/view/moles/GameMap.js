@@ -55,11 +55,10 @@ export default function GameMap({
         scrollWheelZoom={true}
         zoomControl={false}
         style={{ width: "100%", height: "100%" }}
+        minZoom={8}
+        maxZoom={8}
       >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         {/* Show guessed location marker in red after guess */}
         {isGuessed && guessedLocation && (
           <Marker position={guessedLocation} icon={redIcon}>
