@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, StatItem, StatLabel, StatValue } from "./SharedStyles";
+import { Button } from "./SharedStyles";
 
 const RulesPanelContainerStyled = styled.div`
   position: fixed;
