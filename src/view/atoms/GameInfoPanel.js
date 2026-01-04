@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useEffect } from "react";
 import { Button } from "./SharedStyles";
 
 const InfoPanelStyled = styled.div`
@@ -35,10 +36,15 @@ export default function GameInfoPanel({
   onSubmit,
   onNextCity,
 }) {
-  // Auto-advance to next city when guess is submitted
-  if (isGuessed && budget > 0) {
-    onNextCity();
-  }
+  // Auto-advance to next city after a delay to show markers
+  useEffect(() => {
+    if (isGuessed && budget > 0) {
+      const timer = setTimeout(() => {
+        onNextCity();
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isGuessed, budget, onNextCity]);
 
   if (!currentCity) {
     return (

@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import BudgetPieChart from "../atoms/BudgetPieChart";
 import TargetCircle from "../atoms/TargetCircle";
 import GameInfoPanel from "../atoms/GameInfoPanel";
-import ScorePanel from "../atoms/ScorePanel";
 import ResultPanel from "../atoms/ResultPanel";
 import RulesPanelComponent from "../atoms/RulesPanelComponent";
 import GameOverPanel from "../atoms/GameOverPanel";
@@ -140,11 +139,6 @@ function MapView() {
           onSubmit={handleSubmit}
           onNextCity={handleNextCity}
         />
-      )}
-
-      {/* Aggregate Score Panel - shown during gameplay */}
-      {!showRules && !gameOver && currentCity && (
-        <ScorePanel score={score} budget={budget} />
       )}
 
       {/* Result Panel - Only show when guess is submitted */}

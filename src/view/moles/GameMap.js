@@ -15,6 +15,26 @@ const MapWrapper = styled.div`
   position: relative;
 `;
 
+// Create custom red icon for guessed location
+const redIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
+// Create custom green icon for actual location
+const greenIcon = new L.Icon({
+  iconUrl: "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png",
+  shadowUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+
 export default function GameMap({
   position,
   currentCity,
@@ -38,15 +58,15 @@ export default function GameMap({
           minZoom={7}
           maxZoom={10}
         />
-        {/* Show guessed location marker after guess */}
+        {/* Show guessed location marker in red after guess */}
         {isGuessed && guessedLocation && (
-          <Marker position={guessedLocation}>
+          <Marker position={guessedLocation} icon={redIcon}>
             <Popup>Your Guess</Popup>
           </Marker>
         )}
-        {/* Show actual location marker after guess */}
+        {/* Show actual location marker in green after guess */}
         {isGuessed && currentCity && (
-          <Marker position={currentCity.lat_lng}>
+          <Marker position={currentCity.lat_lng} icon={greenIcon}>
             <Popup>{currentCity.name}</Popup>
           </Marker>
         )}
