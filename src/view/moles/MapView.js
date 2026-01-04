@@ -49,7 +49,7 @@ function MapView() {
   useEffect(() => {
     // Load cities data
     fetch(
-      "https://raw.githubusercontent.com/nuuuwan/lk_admin_regions/refs/heads/main/data/ents/dsds.json"
+      "https://raw.githubusercontent.com/nuuuwan/lk_admin_regions/refs/heads/main/data/ents/gnds.json"
     )
       .then((res) => {
         if (!res.ok) {
