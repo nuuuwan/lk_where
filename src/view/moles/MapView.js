@@ -25,7 +25,7 @@ const BudgetChartPanel = styled.div`
   top: 10px;
   right: 10px;
   z-index: 2000;
-  max-width: 200px;
+  max-width: 150px;
 
   @media (max-width: 200px) {
     top: 5px;
