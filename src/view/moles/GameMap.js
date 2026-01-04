@@ -78,7 +78,7 @@ export default function GameMap({
         {isGuessed && guessedLocation && currentCity && distance !== null && (
           <Polyline
             positions={[guessedLocation, currentCity.lat_lng]}
-            color="#2563eb"
+            color="#ef5350"
             weight={2}
             opacity={0.7}
             dashArray="5, 5"
