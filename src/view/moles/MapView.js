@@ -48,16 +48,28 @@ function MapView() {
 
   useEffect(() => {
     // Load cities data
-    fetch(process.env.PUBLIC_URL + "/data/static/cities.json")
+    fetch(
+      "https://raw.githubusercontent.com/nuuuwan/lk_admin_regions/refs/heads/main/data/ents/dsds.json"
+    )
       .then((res) => {
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
-        return res.json();
+        return res.text();
+      })
+      .then((text) => {
+        // Replace NaN with null (NaN is not valid JSON)
+        const cleanedText = text.replace(/:\s*NaN\b/g, ": null");
+        return JSON.parse(cleanedText);
       })
       .then((data) => {
-        setCities(data);
-        pickRandomCity(data);
+        // Transform data to use lat_lng format
+        const transformedData = data.map((item) => ({
+          ...item,
+          lat_lng: [item.center_lat, item.center_lon],
+        }));
+        setCities(transformedData);
+        pickRandomCity(transformedData);
       })
       .catch((error) => {
         console.error("Error loading cities:", error);
