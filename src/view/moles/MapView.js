@@ -8,6 +8,7 @@ import GameInfoPanel from "../atoms/GameInfoPanel";
 import ResultPanel from "../atoms/ResultPanel";
 import RulesPanelComponent from "../atoms/RulesPanelComponent";
 import GameOverPanel from "../atoms/GameOverPanel";
+import ScoreWidget from "../atoms/ScoreWidget";
 import GameMap from "./GameMap";
 import { INITIAL_TRAVEL_BUDGET, calculateDistance } from "./gameUtils";
 
@@ -140,6 +141,9 @@ function MapView() {
           onNextCity={handleNextCity}
         />
       )}
+
+      {/* Score Widget - shown during gameplay */}
+      {!showRules && !gameOver && currentCity && <ScoreWidget score={score} />}
 
       {/* Result Panel - Only show when guess is submitted */}
       {!showRules &&
