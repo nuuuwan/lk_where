@@ -22,15 +22,15 @@ L.Icon.Default.mergeOptions({
 
 const BudgetChartPanel = styled.div`
   position: fixed;
-  top: 60px;
-  right: 20px;
+  top: 10px;
+  right: 10px;
   z-index: 2000;
-  max-width: 360px;
+  max-width: 200px;
 
-  @media (max-width: 600px) {
-    top: 10px;
-    right: 10px;
-    left: 10px;
+  @media (max-width: 200px) {
+    top: 5px;
+    right: 5px;
+    left: 5px;
     max-width: none;
   }
 `;

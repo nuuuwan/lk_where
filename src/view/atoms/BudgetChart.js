@@ -10,9 +10,9 @@ const ChartContainer = styled(Paper)`
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: "Fira Mono", monospace;
 
-  @media (max-width: 600px) {
+  @media (max-width: 320px) {
     padding: 12px;
-    max-width: 100%;
+    max-width: 33%;
   }
 `;
 
@@ -46,9 +46,9 @@ export default function BudgetChart({ used, total }) {
             color: "#66bb6a",
           },
         ]}
-        width={320}
-        height={200}
-        margin={{ top: 10, bottom: 30, left: 10, right: 10 }}
+        width={180}
+        height={180}
+        margin={{ top: 10, bottom: 10, left: 10, right: 10 }}
         slotProps={{
           legend: {
             hidden: false,
