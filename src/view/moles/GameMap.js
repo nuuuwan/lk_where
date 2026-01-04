@@ -1,5 +1,12 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from "react-leaflet";
 import styled from "styled-components";
+import L from "leaflet";
 import MapUpdater from "./MapUpdater";
 
 const MapWrapper = styled.div`
@@ -12,6 +19,8 @@ export default function GameMap({
   position,
   currentCity,
   isGuessed,
+  guessedLocation,
+  distance,
   onMapMove,
 }) {
   return (
@@ -29,10 +38,29 @@ export default function GameMap({
           minZoom={7}
           maxZoom={10}
         />
+        {/* Show guessed location marker after guess */}
+        {isGuessed && guessedLocation && (
+          <Marker position={guessedLocation}>
+            <Popup>Your Guess</Popup>
+          </Marker>
+        )}
+        {/* Show actual location marker after guess */}
         {isGuessed && currentCity && (
           <Marker position={currentCity.lat_lng}>
             <Popup>{currentCity.name}</Popup>
           </Marker>
+        )}
+        {/* Draw line between guessed and actual locations with distance label */}
+        {isGuessed && guessedLocation && currentCity && distance !== null && (
+          <Polyline
+            positions={[guessedLocation, currentCity.lat_lng]}
+            color="#2563eb"
+            weight={2}
+            opacity={0.7}
+            dashArray="5, 5"
+          >
+            <Popup>Distance: {distance.toFixed(2)} km</Popup>
+          </Polyline>
         )}
         <MapUpdater onMapMove={onMapMove} isGuessed={isGuessed} />
       </MapContainer>

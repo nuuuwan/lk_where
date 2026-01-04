@@ -170,6 +170,8 @@ function MapView() {
         position={position}
         currentCity={currentCity}
         isGuessed={isGuessed}
+        guessedLocation={guessedLocation}
+        distance={distance}
         onMapMove={handleMapMove}
       />
     </>

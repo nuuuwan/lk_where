@@ -35,6 +35,11 @@ export default function GameInfoPanel({
   onSubmit,
   onNextCity,
 }) {
+  // Auto-advance to next city when guess is submitted
+  if (isGuessed && budget > 0) {
+    onNextCity();
+  }
+
   if (!currentCity) {
     return (
       <InfoPanelStyled>
@@ -48,20 +53,11 @@ export default function GameInfoPanel({
       <PlaceName>{currentCity.name}</PlaceName>
       <Instruction>
         {isGuessed
-          ? "Distance calculated. Pick the next place!"
+          ? "Loading next place..."
           : "Navigate to the center of this place and click the map or move the target to your best guess."}
       </Instruction>
       {guessedLocation && !isGuessed && (
         <Button onClick={onSubmit}>Submit Guess</Button>
-      )}
-      {isGuessed && (
-        <Button
-          onClick={onNextCity}
-          style={{ marginTop: "10px" }}
-          disabled={budget <= 0}
-        >
-          {budget <= 0 ? "Game Over" : "Next City"}
-        </Button>
       )}
     </InfoPanelStyled>
   );

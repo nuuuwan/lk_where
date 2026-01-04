@@ -8,6 +8,7 @@ const ChartContainer = styled(Paper)`
   border-radius: 8px;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: "Fira Mono", monospace;
 `;
 
 export default function BudgetPieChart({ used, total }) {
@@ -15,12 +16,9 @@ export default function BudgetPieChart({ used, total }) {
 
   const data = [
     {
-      category: `Used (${Math.round(used)} km)`,
-      value: used,
-    },
-    {
-      category: `Remaining (${Math.round(remaining)} km)`,
-      value: remaining,
+      category: "Travel Budget",
+      used: used,
+      remaining: remaining,
     },
   ];
 
@@ -29,14 +27,28 @@ export default function BudgetPieChart({ used, total }) {
       <BarChart
         dataset={data}
         xAxis={[{ scaleType: "band", dataKey: "category" }]}
-        yAxis={[{ scaleType: "linear" }]}
-        series={[{ dataKey: "value", label: "km" }]}
+        series={[
+          {
+            dataKey: "used",
+            label: `Used (${Math.round(used)} km)`,
+            stack: "A",
+            color: "#ef5350",
+          },
+          {
+            dataKey: "remaining",
+            label: `Remaining (${Math.round(remaining)} km)`,
+            stack: "A",
+            color: "#66bb6a",
+          },
+        ]}
         width={320}
         height={200}
-        margin={{ top: 10, bottom: 60, left: 50, right: 10 }}
+        margin={{ top: 10, bottom: 30, left: 10, right: 10 }}
+        sx={{ "& text": { fontFamily: "'Fira Mono', monospace" } }}
         slotProps={{
           legend: {
-            hidden: true,
+            hidden: false,
+            position: { vertical: "bottom", horizontal: "middle" },
           },
         }}
       />
