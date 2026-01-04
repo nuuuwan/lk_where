@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Paper, Typography } from "@mui/material";
+import { Paper, Typography, Box } from "@mui/material";
 
 const ScoreWidgetContainer = styled(Paper)`
   padding: 16px;
@@ -15,7 +15,7 @@ const ScoreWidgetContainer = styled(Paper)`
 `;
 
 const Label = styled(Typography)`
-  font-size: 10px;
+  font-size: 9px;
   color: #999;
   font-weight: 600;
   text-transform: uppercase;
@@ -23,19 +23,22 @@ const Label = styled(Typography)`
   margin-bottom: 8px;
 `;
 
-const Value = styled(Typography)`
-  font-size: 56px;
-  font-weight: 900;
-  color: #1a1a1a;
-  font-family: "Fira Mono", monospace;
-  text-align: center;
-`;
-
 export default function ScoreWidget({ score }) {
   return (
     <ScoreWidgetContainer>
       <Label>Total Score</Label>
-      <Value>{score}</Value>
+      <Box
+        sx={{
+          fontSize: "56px",
+          fontWeight: 900,
+          color: "#000",
+          fontFamily: '"Fira Mono", monospace',
+          textAlign: "center",
+          lineHeight: 1,
+        }}
+      >
+        {score}
+      </Box>
     </ScoreWidgetContainer>
   );
 }
