@@ -5,7 +5,6 @@ import { useEffect, useMemo, useState } from "react";
 import BudgetChart from "../atoms/BudgetChart";
 import TargetCircle from "../atoms/TargetCircle";
 import GameInfoPanel from "../atoms/GameInfoPanel";
-import ResultPanel from "../atoms/ResultPanel";
 import RulesPanelComponent from "../atoms/RulesPanelComponent";
 import GameOverPanel from "../atoms/GameOverPanel";
 import ScoreWidget from "../atoms/ScoreWidget";
@@ -153,13 +152,7 @@ function MapView() {
       {!showRules && !gameOver && currentCity && <ScoreWidget score={score} />}
 
       {/* Result Panel - Only show when guess is submitted */}
-      {!showRules &&
-        !gameOver &&
-        currentCity &&
-        isGuessed &&
-        distance !== null && (
-          <ResultPanel distance={distance} budget={budget} />
-        )}
+      {!showRules && !gameOver && currentCity && isGuessed}
 
       {/* Budget Pie Chart - Show during gameplay */}
       {!showRules && !gameOver && currentCity && (
