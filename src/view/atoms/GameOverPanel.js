@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button, StatItem, StatLabel, StatValue } from "./SharedStyles";
+import { Button } from "./SharedStyles";
 
 const GameOverPanelContainerStyled = styled.div`
   position: fixed;
@@ -24,22 +24,21 @@ const GameOverText = styled.h2`
   color: #1a1a1a;
 `;
 
-export default function GameOverPanel_Component({ score, budget, onRestart }) {
+const ScoreLevelText = styled.div`
+  font-size: 48px;
+  font-weight: 900;
+  margin-bottom: 15px;
+  font-family: "Fira Mono", monospace;
+  color: #1a1a1a;
+`;
+
+export default function GameOverPanel_Component({ score, onRestart }) {
   return (
     <GameOverPanelContainerStyled>
       <GameOverPanel>
         <GameOverText>Game Over!</GameOverText>
-        <StatItem>
-          <StatLabel>Final Score</StatLabel>
-          <StatValue>{score}</StatValue>
-        </StatItem>
-        <StatItem>
-          <StatLabel>Travel Budget Remaining</StatLabel>
-          <StatValue>{budget.toFixed(2)} km</StatValue>
-        </StatItem>
-        <Button onClick={onRestart} style={{ marginTop: "15px" }}>
-          Play Again
-        </Button>
+        <ScoreLevelText>{score}</ScoreLevelText>
+        <Button onClick={onRestart}>Play Again</Button>
       </GameOverPanel>
     </GameOverPanelContainerStyled>
   );

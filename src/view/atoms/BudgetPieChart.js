@@ -44,12 +44,6 @@ export default function BudgetPieChart({ used, total }) {
         width={320}
         height={200}
         margin={{ top: 10, bottom: 30, left: 10, right: 10 }}
-        sx={{
-          "& text": { fontFamily: "'Fira Mono', monospace" },
-          "& .MuiChartsLegend-root text": {
-            fontFamily: "'Fira Mono', monospace",
-          },
-        }}
         slotProps={{
           legend: {
             hidden: false,

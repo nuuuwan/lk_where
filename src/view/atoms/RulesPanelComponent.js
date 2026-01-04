@@ -43,16 +43,6 @@ const RulesList = styled.ul`
   }
 `;
 
-const RulesText = styled.p`
-  margin: 0 0 12px 0;
-  font-size: 13px;
-  color: #666;
-  line-height: 1.5;
-  background: #f9fafb;
-  padding: 10px 12px;
-  border-radius: 4px;
-  border-left: 3px solid #2563eb;
-`;
 
 const INITIAL_TRAVEL_BUDGET = 1_000;
 
