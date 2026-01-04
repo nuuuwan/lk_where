@@ -9,6 +9,11 @@ const ChartContainer = styled(Paper)`
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   font-family: "Fira Mono", monospace;
+
+  @media (max-width: 600px) {
+    padding: 12px;
+    max-width: 100%;
+  }
 `;
 
 export default function BudgetPieChart({ used, total }) {

@@ -12,6 +12,12 @@ export const Button = styled.button`
   margin-right: 8px;
   transition: background-color 0.2s ease;
 
+  @media (max-width: 600px) {
+    padding: 6px 12px;
+    font-size: 11px;
+    margin-right: 6px;
+  }
+
   &:hover {
     background-color: #1d4ed8;
   }

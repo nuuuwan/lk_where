@@ -12,6 +12,12 @@ const TargetCircleStyled = styled.div`
   border: 3px solid #000;
   border-radius: 50%;
 
+  @media (max-width: 600px) {
+    width: 80px;
+    height: 80px;
+    border-width: 2px;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -24,6 +30,14 @@ const TargetCircleStyled = styled.div`
     transform: translate(-50%, -50%);
   }
 
+  @media (max-width: 600px) {
+    &::before {
+      width: 32px;
+      height: 32px;
+      border-width: 1.5px;
+    }
+  }
+
   &::after {
     content: "";
     position: absolute;
@@ -34,6 +48,13 @@ const TargetCircleStyled = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 600px) {
+    &::after {
+      width: 6px;
+      height: 6px;
+    }
   }
 `;
 

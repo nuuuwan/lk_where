@@ -12,6 +12,15 @@ const InfoPanelStyled = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   z-index: 4000;
   max-width: 280px;
+
+  @media (max-width: 600px) {
+    padding: 12px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    border-radius: 4px;
+  }
 `;
 
 const PlaceName = styled.h2`
@@ -19,6 +28,11 @@ const PlaceName = styled.h2`
   font-size: 18px;
   font-weight: 600;
   color: #1a1a1a;
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
 `;
 
 const Instruction = styled.p`
@@ -26,6 +40,11 @@ const Instruction = styled.p`
   color: #666;
   font-size: 13px;
   line-height: 1.4;
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
 `;
 
 export default function GameInfoPanel({

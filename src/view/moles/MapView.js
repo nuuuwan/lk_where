@@ -26,6 +26,13 @@ const BudgetChartPanel = styled.div`
   right: 20px;
   z-index: 2000;
   max-width: 360px;
+
+  @media (max-width: 600px) {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    max-width: none;
+  }
 `;
 
 function MapView() {

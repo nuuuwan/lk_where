@@ -10,6 +10,16 @@ const ResultPanelStyled = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   z-index: 2000;
   max-width: 300px;
+
+  @media (max-width: 600px) {
+    top: auto;
+    right: 10px;
+    left: 10px;
+    bottom: 130px;
+    padding: 12px;
+    max-width: none;
+    border-radius: 4px;
+  }
 `;
 
 const ResultTitle = styled.h3`
@@ -17,6 +27,11 @@ const ResultTitle = styled.h3`
   font-size: 14px;
   font-weight: 600;
   color: #1a1a1a;
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
 `;
 
 const ResultValue = styled.p`
@@ -27,6 +42,11 @@ const ResultValue = styled.p`
   strong {
     color: #1a1a1a;
     font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    margin: 5px 0;
   }
 `;
 

@@ -13,6 +13,16 @@ const RulesPanelContainerStyled = styled.div`
   max-width: 380px;
   max-height: 70vh;
   overflow-y: auto;
+
+  @media (max-width: 600px) {
+    padding: 14px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    max-width: none;
+    max-height: 80vh;
+    border-radius: 4px;
+  }
 `;
 
 const RulesPanel = styled.div`
@@ -24,6 +34,11 @@ const RulesTitle = styled.h2`
   font-size: 18px;
   font-weight: 700;
   color: #1a1a1a;
+
+  @media (max-width: 600px) {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 `;
 
 const RulesList = styled.ul`
@@ -40,6 +55,16 @@ const RulesList = styled.ul`
   strong {
     color: #1a1a1a;
     font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    padding-left: 16px;
+    margin-bottom: 10px;
+
+    li {
+      margin-bottom: 5px;
+    }
   }
 `;
 

@@ -7,19 +7,34 @@ const theme = createTheme({
     body1: {
       fontSize: 14,
       fontFamily: '"Fira Mono", monospace',
+      "@media (max-width: 600px)": {
+        fontSize: 12,
+      },
     },
     body2: {
       fontSize: 14,
       fontFamily: '"Fira Mono", monospace',
+      "@media (max-width: 600px)": {
+        fontSize: 12,
+      },
     },
     h1: {
       fontFamily: '"Fira Mono", monospace',
+      "@media (max-width: 600px)": {
+        fontSize: "1.5rem",
+      },
     },
     h2: {
       fontFamily: '"Fira Mono", monospace',
+      "@media (max-width: 600px)": {
+        fontSize: "1.25rem",
+      },
     },
     h3: {
       fontFamily: '"Fira Mono", monospace',
+      "@media (max-width: 600px)": {
+        fontSize: "1.1rem",
+      },
     },
     h4: {
       fontFamily: '"Fira Mono", monospace',
@@ -32,6 +47,9 @@ const theme = createTheme({
     },
     button: {
       fontFamily: '"Fira Mono", monospace',
+      "@media (max-width: 600px)": {
+        fontSize: "0.75rem",
+      },
     },
   },
 });
