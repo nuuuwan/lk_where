@@ -16,7 +16,7 @@ const ChartContainer = styled(Paper)`
   }
 `;
 
-export default function BudgetPieChart({ used, total }) {
+export default function BudgetChart({ used, total }) {
   const remaining = Math.max(0, total - used);
 
   const data = [

@@ -2,7 +2,7 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styled from "styled-components";
 import { useEffect, useMemo, useState } from "react";
-import BudgetPieChart from "../atoms/BudgetPieChart";
+import BudgetChart from "../atoms/BudgetChart";
 import TargetCircle from "../atoms/TargetCircle";
 import GameInfoPanel from "../atoms/GameInfoPanel";
 import ResultPanel from "../atoms/ResultPanel";
@@ -164,7 +164,7 @@ function MapView() {
       {/* Budget Pie Chart - Show during gameplay */}
       {!showRules && !gameOver && currentCity && (
         <BudgetChartPanel>
-          <BudgetPieChart
+          <BudgetChart
             used={INITIAL_TRAVEL_BUDGET - budget}
             total={INITIAL_TRAVEL_BUDGET}
           />
