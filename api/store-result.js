@@ -5,10 +5,11 @@ const BLOB_STORE = "lk-where-blob";
 const LEADERBOARD_FILE = "leaderboard.json";
 
 module.exports = async (req, res) => {
-  // Enable CORS
+  // Enable CORS for all responses
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader("Access-Control-Max-Age", "86400");
 
   if (req.method === "OPTIONS") {
     return res.status(200).end();

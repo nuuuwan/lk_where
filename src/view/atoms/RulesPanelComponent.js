@@ -68,7 +68,7 @@ const RulesList = styled.ul`
   }
 `;
 
-const INITIAL_TRAVEL_BUDGET = 1_000;
+const INITIAL_TRAVEL_BUDGET = 100;
 
 export default function RulesPanel_Component({ onStart }) {
   return (
