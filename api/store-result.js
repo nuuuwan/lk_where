@@ -1,8 +1,8 @@
 // Vercel Serverless Function to store a game result
-const { put, head } = require("@vercel/blob");
+const { put } = require("@vercel/blob");
 
 const BLOB_STORE = "lk-where-blob";
-const LEADERBOARD_FILE = "leaderboard.json";
+const RESULTS_PREFIX = "results/";
 
 module.exports = async (req, res) => {
   // Enable CORS for all responses
@@ -28,42 +28,24 @@ module.exports = async (req, res) => {
         .json({ error: "playerName and score are required" });
     }
 
-    // Store the result
+    // Create the result object
+    const resultTimestamp = timestamp || Date.now();
     const result = {
       playerName: playerName.trim().substring(0, 50), // Limit name length
       score: parseInt(score),
-      timestamp: timestamp || Date.now(),
+      timestamp: resultTimestamp,
     };
 
-    // Fetch existing leaderboard data
-    let leaderboardData = [];
-    try {
-      const blobExists = await head(`${BLOB_STORE}/${LEADERBOARD_FILE}`);
-      if (blobExists) {
-        const response = await fetch(blobExists.url);
-        leaderboardData = await response.json();
-      }
-    } catch (error) {
-      // File doesn't exist yet, start with empty array
-      leaderboardData = [];
-    }
+    // Store each result as a separate file with timestamp-based filename
+    const fileName = `${RESULTS_PREFIX}${resultTimestamp}-${Math.random()
+      .toString(36)
+      .substring(7)}.json`;
 
-    // Add new result
-    leaderboardData.push(result);
-
-    // Sort by score descending
-    leaderboardData.sort((a, b) => b.score - a.score);
-
-    // Store updated leaderboard
-    await put(
-      `${BLOB_STORE}/${LEADERBOARD_FILE}`,
-      JSON.stringify(leaderboardData),
-      {
-        access: "public",
-        contentType: "application/json",
-        addRandomSuffix: false,
-      }
-    );
+    await put(`${BLOB_STORE}/${fileName}`, JSON.stringify(result), {
+      access: "public",
+      contentType: "application/json",
+      addRandomSuffix: false,
+    });
 
     return res.status(200).json({
       success: true,

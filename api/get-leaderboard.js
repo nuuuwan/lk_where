@@ -1,8 +1,8 @@
 // Vercel Serverless Function to get leaderboard results
-const { head } = require("@vercel/blob");
+const { list } = require("@vercel/blob");
 
 const BLOB_STORE = "lk-where-blob";
-const LEADERBOARD_FILE = "leaderboard.json";
+const RESULTS_PREFIX = "results/";
 
 module.exports = async (req, res) => {
   // Enable CORS for all responses
@@ -22,23 +22,36 @@ module.exports = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 100;
 
-    // Fetch leaderboard data from blob storage
+    // List all result files from blob storage
     let leaderboardData = [];
     try {
-      const blobExists = await head(`${BLOB_STORE}/${LEADERBOARD_FILE}`);
-      if (blobExists) {
-        const response = await fetch(blobExists.url);
-        leaderboardData = await response.json();
-      }
+      const { blobs } = await list({
+        prefix: `${BLOB_STORE}/${RESULTS_PREFIX}`,
+      });
+
+      // Fetch and parse each result file
+      const fetchPromises = blobs.map(async (blob) => {
+        try {
+          const response = await fetch(blob.url);
+          return await response.json();
+        } catch (error) {
+          console.error(`Error fetching blob ${blob.pathname}:`, error);
+          return null;
+        }
+      });
+
+      const results = await Promise.all(fetchPromises);
+      leaderboardData = results.filter((r) => r !== null);
     } catch (error) {
-      // File doesn't exist yet, return empty array
+      console.error("Error listing blobs:", error);
+      // If listing fails, return empty array
       return res.status(200).json({
         leaderboard: [],
         count: 0,
       });
     }
 
-    // Limit results and ensure sorted by score descending
+    // Sort by score descending and limit results
     const limitedResults = leaderboardData
       .sort((a, b) => b.score - a.score)
       .slice(0, limit);
