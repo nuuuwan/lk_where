@@ -99,10 +99,11 @@ export default function LeaderboardComponent({
         setLoading(true);
         setError(null);
         const data = await getLeaderboard(limit);
-        setLeaderboard(data);
+        console.log("Leaderboard data received:", data);
+        setLeaderboard(data || []);
       } catch (err) {
         setError("Failed to load leaderboard");
-        console.error(err);
+        console.error("Leaderboard error:", err);
       } finally {
         setLoading(false);
       }
