@@ -10,7 +10,7 @@ import {
 
 const GameOverPanelContainerStyled = styled.div`
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   left: 20px;
   background: white;
   padding: 16px;
@@ -18,17 +18,17 @@ const GameOverPanelContainerStyled = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   z-index: 2000;
   max-width: 400px;
-  max-height: 80vh;
+  max-height: calc(80vh - 80px);
   overflow-y: auto;
 
   @media (max-width: 600px) {
     padding: 14px;
-    bottom: 10px;
+    bottom: 70px;
     left: 10px;
     right: 10px;
     max-width: none;
     border-radius: 4px;
-    max-height: 85vh;
+    max-height: calc(85vh - 70px);
   }
 `;
 

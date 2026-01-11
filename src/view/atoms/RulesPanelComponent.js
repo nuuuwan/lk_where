@@ -4,7 +4,7 @@ import { INITIAL_TRAVEL_BUDGET } from "../moles/gameUtils";
 
 const RulesPanelContainerStyled = styled.div`
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   left: 20px;
   background: white;
   padding: 18px;
@@ -12,16 +12,16 @@ const RulesPanelContainerStyled = styled.div`
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
   z-index: 2000;
   max-width: 380px;
-  max-height: 70vh;
+  max-height: calc(70vh - 80px);
   overflow-y: auto;
 
   @media (max-width: 600px) {
     padding: 14px;
-    bottom: 10px;
+    bottom: 70px;
     left: 10px;
     right: 10px;
     max-width: none;
-    max-height: 80vh;
+    max-height: calc(80vh - 70px);
     border-radius: 4px;
   }
 `;
