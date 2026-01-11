@@ -130,11 +130,17 @@ export default function LeaderboardComponent({
     );
   }
 
-  if (leaderboard.length === 0) {
+  if (!leaderboard || leaderboard.length === 0) {
     return (
       <LeaderboardContainer>
         <LeaderboardTitle>Top Players</LeaderboardTitle>
-        <LoadingText>No scores yet. Be the first!</LoadingText>
+        <LoadingText>
+          No scores yet. Be the first!
+          <br />
+          <small style={{ fontSize: "12px", marginTop: "8px", display: "block" }}>
+            Play the game and submit your score to appear here.
+          </small>
+        </LoadingText>
       </LeaderboardContainer>
     );
   }
