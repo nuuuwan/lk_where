@@ -1,4 +1,4 @@
-export const INITIAL_TRAVEL_BUDGET = 1_000; // km
+export const INITIAL_TRAVEL_BUDGET = 100; // km
 
 export function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Earth's radius in km
