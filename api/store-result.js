@@ -1,5 +1,8 @@
 // Vercel Serverless Function to store a game result
-const { kv } = require("@vercel/kv");
+const { put, head } = require("@vercel/blob");
+
+const BLOB_STORE = "lk-where-blob";
+const LEADERBOARD_FILE = "leaderboard.json";
 
 module.exports = async (req, res) => {
   // Enable CORS
@@ -24,11 +27,6 @@ module.exports = async (req, res) => {
         .json({ error: "playerName and score are required" });
     }
 
-    // Create a unique ID for this result
-    const resultId = `result:${timestamp || Date.now()}:${Math.random()
-      .toString(36)
-      .substring(7)}`;
-
     // Store the result
     const result = {
       playerName: playerName.trim().substring(0, 50), // Limit name length
@@ -36,13 +34,34 @@ module.exports = async (req, res) => {
       timestamp: timestamp || Date.now(),
     };
 
-    await kv.set(resultId, result);
+    // Fetch existing leaderboard data
+    let leaderboardData = [];
+    try {
+      const blobExists = await head(`${BLOB_STORE}/${LEADERBOARD_FILE}`);
+      if (blobExists) {
+        const response = await fetch(blobExists.url);
+        leaderboardData = await response.json();
+      }
+    } catch (error) {
+      // File doesn't exist yet, start with empty array
+      leaderboardData = [];
+    }
 
-    // Also add to a sorted set for easy leaderboard retrieval
-    await kv.zadd("leaderboard", {
-      score: result.score,
-      member: resultId,
-    });
+    // Add new result
+    leaderboardData.push(result);
+
+    // Sort by score descending
+    leaderboardData.sort((a, b) => b.score - a.score);
+
+    // Store updated leaderboard
+    await put(
+      `${BLOB_STORE}/${LEADERBOARD_FILE}`,
+      JSON.stringify(leaderboardData),
+      {
+        access: "public",
+        contentType: "application/json",
+      }
+    );
 
     return res.status(200).json({
       success: true,

@@ -1,6 +1,6 @@
 // API utility functions for leaderboard
 const API_BASE_URL =
-  process.env.REACT_APP_API_URL || "https://lkwhere-vercel.vercel.app";
+  process.env.REACT_APP_API_URL || "https://lk-where.vercel.app";
 
 export const submitScore = async (playerName, score) => {
   try {

@@ -1,5 +1,8 @@
 // Vercel Serverless Function to get leaderboard results
-const { kv } = require("@vercel/kv");
+const { head } = require("@vercel/blob");
+
+const BLOB_STORE = "lk-where-blob";
+const LEADERBOARD_FILE = "leaderboard.json";
 
 module.exports = async (req, res) => {
   // Enable CORS
@@ -18,34 +21,30 @@ module.exports = async (req, res) => {
   try {
     const limit = parseInt(req.query.limit) || 100;
 
-    // Get top scores from sorted set (descending order)
-    const topResultIds = await kv.zrange("leaderboard", 0, limit - 1, {
-      rev: true,
-    });
-
-    if (!topResultIds || topResultIds.length === 0) {
+    // Fetch leaderboard data from blob storage
+    let leaderboardData = [];
+    try {
+      const blobExists = await head(`${BLOB_STORE}/${LEADERBOARD_FILE}`);
+      if (blobExists) {
+        const response = await fetch(blobExists.url);
+        leaderboardData = await response.json();
+      }
+    } catch (error) {
+      // File doesn't exist yet, return empty array
       return res.status(200).json({
         leaderboard: [],
         count: 0,
       });
     }
 
-    // Fetch all the results
-    const results = await Promise.all(
-      topResultIds.map(async (id) => {
-        const result = await kv.get(id);
-        return result;
-      })
-    );
-
-    // Filter out any null results and sort by score descending
-    const validResults = results
-      .filter((r) => r !== null)
-      .sort((a, b) => b.score - a.score);
+    // Limit results and ensure sorted by score descending
+    const limitedResults = leaderboardData
+      .sort((a, b) => b.score - a.score)
+      .slice(0, limit);
 
     return res.status(200).json({
-      leaderboard: validResults,
-      count: validResults.length,
+      leaderboard: limitedResults,
+      count: limitedResults.length,
     });
   } catch (error) {
     console.error("Error fetching leaderboard:", error);
