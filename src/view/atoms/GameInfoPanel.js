@@ -4,7 +4,7 @@ import { Button } from "./SharedStyles";
 
 const InfoPanelStyled = styled.div`
   position: fixed;
-  bottom: 20px;
+  bottom: 80px;
   left: 20px;
   background: white;
   padding: 16px;
@@ -15,7 +15,7 @@ const InfoPanelStyled = styled.div`
 
   @media (max-width: 600px) {
     padding: 12px;
-    bottom: 10px;
+    bottom: 70px;
     left: 10px;
     right: 10px;
     max-width: none;

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Button } from "./SharedStyles";
+import { INITIAL_TRAVEL_BUDGET } from "../moles/gameUtils";
 
 const RulesPanelContainerStyled = styled.div`
   position: fixed;
@@ -67,8 +68,6 @@ const RulesList = styled.ul`
     }
   }
 `;
-
-const INITIAL_TRAVEL_BUDGET = 100;
 
 export default function RulesPanel_Component({ onStart }) {
   return (
