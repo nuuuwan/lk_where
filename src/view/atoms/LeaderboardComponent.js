@@ -137,7 +137,9 @@ export default function LeaderboardComponent({
         <LoadingText>
           No scores yet. Be the first!
           <br />
-          <small style={{ fontSize: "12px", marginTop: "8px", display: "block" }}>
+          <small
+            style={{ fontSize: "12px", marginTop: "8px", display: "block" }}
+          >
             Play the game and submit your score to appear here.
           </small>
         </LoadingText>
