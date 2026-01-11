@@ -94,22 +94,22 @@ export default function LeaderboardComponent({
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    loadLeaderboard();
-  }, []);
+    const loadLeaderboard = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const data = await getLeaderboard(limit);
+        setLeaderboard(data);
+      } catch (err) {
+        setError("Failed to load leaderboard");
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const loadLeaderboard = async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      const data = await getLeaderboard(limit);
-      setLeaderboard(data);
-    } catch (err) {
-      setError("Failed to load leaderboard");
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+    loadLeaderboard();
+  }, [limit]);
 
   if (loading) {
     return (
