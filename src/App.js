@@ -23,15 +23,23 @@ const ContentContainer = styled.div`
 function App() {
   const [currentView, setCurrentView] = useState("game");
 
+  const handleNavigate = (view) => {
+    setCurrentView(view);
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <AppContainer>
         <ContentContainer>
-          {currentView === "game" ? <MapView /> : <LeaderboardPage />}
+          {currentView === "game" ? (
+            <MapView onViewLeaderboard={() => handleNavigate("leaderboard")} />
+          ) : (
+            <LeaderboardPage />
+          )}
         </ContentContainer>
         <BottomNavigator
           currentView={currentView}
-          onNavigate={setCurrentView}
+          onNavigate={handleNavigate}
         />
       </AppContainer>
     </ThemeProvider>

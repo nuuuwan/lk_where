@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState, useEffect } from "react";
 import { Button } from "./SharedStyles";
-import LeaderboardComponent from "./LeaderboardComponent";
 import {
   submitScore,
   savePlayerName,
@@ -113,7 +112,39 @@ const ErrorMessage = styled.div`
   margin: 10px 0;
 `;
 
-export default function GameOverPanel_Component({ score, onRestart }) {
+const LeaderboardLink = styled.button`
+  background: transparent;
+  border: 2px solid #1976d2;
+  color: #1976d2;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: "Fira Mono", monospace;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: all 0.2s ease;
+  font-weight: 600;
+
+  &:hover {
+    background: #1976d2;
+    color: white;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+`;
+
+export default function GameOverPanel_Component({
+  score,
+  onRestart,
+  onViewLeaderboard,
+}) {
   const [playerName, setPlayerName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -188,8 +219,10 @@ export default function GameOverPanel_Component({ score, onRestart }) {
 
         <Button onClick={handlePlayAgain}>Play Again</Button>
 
-        {submitted && (
-          <LeaderboardComponent currentPlayerName={playerName} limit={10} />
+        {submitted && onViewLeaderboard && (
+          <LeaderboardLink onClick={onViewLeaderboard}>
+            View Leaderboard 🏆
+          </LeaderboardLink>
         )}
       </GameOverPanel>
     </GameOverPanelContainerStyled>

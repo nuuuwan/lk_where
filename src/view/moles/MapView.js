@@ -34,7 +34,7 @@ const BudgetChartPanel = styled.div`
   }
 `;
 
-function MapView() {
+function MapView({ onViewLeaderboard }) {
   const position = useMemo(() => [6.9271, 80.7789], []); // Center of Sri Lanka
   const [cities, setCities] = useState([]);
   const [currentCity, setCurrentCity] = useState(null);
@@ -146,6 +146,7 @@ function MapView() {
           score={score}
           budget={budget}
           onRestart={handleRestartGame}
+          onViewLeaderboard={onViewLeaderboard}
         />
       )}
 
