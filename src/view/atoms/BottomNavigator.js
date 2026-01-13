@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import MapIcon from "@mui/icons-material/Map";
-import LeaderboardIcon from "@mui/icons-material/Leaderboard";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 const NavigatorContainer = styled.div`
   position: fixed;
@@ -81,7 +81,7 @@ function BottomNavigator({ currentView, onNavigate }) {
         aria-label="Leaderboard"
       >
         <IconWrapper>
-          <LeaderboardIcon fontSize="inherit" />
+          <EmojiEventsIcon fontSize="inherit" />
         </IconWrapper>
         <span>Leaderboard</span>
       </NavItem>

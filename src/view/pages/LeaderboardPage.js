@@ -12,9 +12,10 @@ const PageContainer = styled.div`
   padding-bottom: 80px;
   overflow-y: auto;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-sizing: border-box;
 
   @media (max-width: 600px) {
-    padding: 15px;
+    padding: 10px;
     padding-bottom: 76px;
   }
 `;
@@ -80,9 +81,11 @@ const ContentWrapper = styled.div`
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
+  box-sizing: border-box;
+  overflow: hidden;
 
   @media (max-width: 600px) {
-    padding: 16px;
+    padding: 12px;
     border-radius: 8px;
   }
 `;

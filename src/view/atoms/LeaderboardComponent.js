@@ -4,13 +4,15 @@ import { getLeaderboard } from "../../nonview/core/leaderboardApi";
 
 const LeaderboardContainer = styled.div`
   margin-top: 20px;
-  max-height: 300px;
+  max-height: 600px;
   overflow-y: auto;
   border-top: 2px solid #eee;
   padding-top: 15px;
+  width: 100%;
+  box-sizing: border-box;
 
   @media (max-width: 600px) {
-    max-height: 250px;
+    max-height: 500px;
   }
 `;
 
@@ -40,10 +42,13 @@ const LeaderboardEntry = styled.div`
   background: ${(props) => (props.$isCurrentPlayer ? "#fff9e6" : "#f9f9f9")};
   border-radius: 4px;
   font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 
   @media (max-width: 600px) {
     font-size: 12px;
-    padding: 6px 10px;
+    padding: 6px 8px;
   }
 `;
 
@@ -56,6 +61,11 @@ const EntryRank = styled.span`
     return "#666";
   }};
   min-width: 25px;
+  flex-shrink: 0;
+
+  @media (max-width: 600px) {
+    min-width: 22px;
+  }
 `;
 
 const EntryName = styled.span`
@@ -64,6 +74,11 @@ const EntryName = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  min-width: 0;
+
+  @media (max-width: 600px) {
+    margin: 0 6px;
+  }
 `;
 
 const EntryScore = styled.span`
