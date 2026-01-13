@@ -164,7 +164,7 @@ export default function LeaderboardComponent({
 
   return (
     <LeaderboardContainer>
-      <LeaderboardTitle>Top {limit} Players</LeaderboardTitle>
+      <LeaderboardTitle>Top Players</LeaderboardTitle>
       <LeaderboardList>
         {leaderboard.map((entry, index) => (
           <LeaderboardEntry
