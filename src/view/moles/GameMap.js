@@ -20,7 +20,8 @@ const MapWrapper = styled.div`
 
 // Create custom red icon for guessed location
 const redIcon = new L.Icon({
-  iconUrl: "https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png",
+  iconUrl:
+    "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png",
   shadowUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png",
   iconSize: [25, 41],
@@ -60,7 +61,7 @@ export default function GameMap({
         minZoom={8}
         maxZoom={8}
       >
-        <TileLayer url="https://a.basemaps.cartocdn.com/rastertiles/voyager_nolabels/{z}/{x}/{y}.png" />
+        <TileLayer url="https://a.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png" />
         {/* Show guessed location marker in red after guess */}
         {isGuessed && guessedLocation && (
           <Marker position={guessedLocation} icon={redIcon}>
