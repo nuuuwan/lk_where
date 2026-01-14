@@ -4,16 +4,11 @@ import { getLeaderboard } from "../../nonview/core/leaderboardApi";
 
 const LeaderboardContainer = styled.div`
   margin-top: 20px;
-  max-height: 600px;
   overflow-y: auto;
   border-top: 2px solid #eee;
   padding-top: 15px;
   width: 100%;
   box-sizing: border-box;
-
-  @media (max-width: 600px) {
-    max-height: 500px;
-  }
 `;
 
 const LeaderboardTitle = styled.h3`
