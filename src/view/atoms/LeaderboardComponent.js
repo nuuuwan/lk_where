@@ -3,24 +3,9 @@ import { useState, useEffect } from "react";
 import { getLeaderboard } from "../../nonview/core/leaderboardApi";
 
 const LeaderboardContainer = styled.div`
-  margin-top: 20px;
   overflow-y: auto;
-  border-top: 2px solid #eee;
-  padding-top: 15px;
   width: 100%;
   box-sizing: border-box;
-`;
-
-const LeaderboardTitle = styled.h3`
-  margin: 0 0 12px 0;
-  font-size: 16px;
-  font-weight: 700;
-  color: #1a1a1a;
-  text-align: center;
-
-  @media (max-width: 600px) {
-    font-size: 14px;
-  }
 `;
 
 const LeaderboardList = styled.div`
@@ -125,7 +110,6 @@ export default function LeaderboardComponent({
   if (loading) {
     return (
       <LeaderboardContainer>
-        <LeaderboardTitle>Top Players</LeaderboardTitle>
         <LoadingText>Loading leaderboard...</LoadingText>
       </LeaderboardContainer>
     );
@@ -134,7 +118,6 @@ export default function LeaderboardComponent({
   if (error) {
     return (
       <LeaderboardContainer>
-        <LeaderboardTitle>Top Players</LeaderboardTitle>
         <ErrorText>{error}</ErrorText>
       </LeaderboardContainer>
     );
@@ -143,7 +126,6 @@ export default function LeaderboardComponent({
   if (!leaderboard || leaderboard.length === 0) {
     return (
       <LeaderboardContainer>
-        <LeaderboardTitle>Top Players</LeaderboardTitle>
         <LoadingText>
           No scores yet. Be the first!
           <br />
@@ -159,7 +141,6 @@ export default function LeaderboardComponent({
 
   return (
     <LeaderboardContainer>
-      <LeaderboardTitle>Top Players</LeaderboardTitle>
       <LeaderboardList>
         {leaderboard.map((entry, index) => (
           <LeaderboardEntry

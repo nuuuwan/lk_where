@@ -4,20 +4,18 @@ import LeaderboardComponent from "../atoms/LeaderboardComponent";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
 const PageContainer = styled.div`
-  height: 100%;
-  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   padding: 20px;
-  padding-bottom: 80px;
+  margin-bottom: 50px;
   overflow-y: auto;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #00f 0%, #0f0 100%);
   box-sizing: border-box;
-
-  @media (max-width: 600px) {
-    padding: 10px;
-    padding-bottom: 76px;
-  }
 `;
 
 const HeaderContainer = styled.div`
@@ -26,10 +24,7 @@ const HeaderContainer = styled.div`
   justify-content: center;
   gap: 12px;
   margin-bottom: 20px;
-
-  @media (max-width: 600px) {
-    margin-bottom: 15px;
-  }
+  flex-shrink: 0;
 `;
 
 const PageTitle = styled.h1`
@@ -39,15 +34,10 @@ const PageTitle = styled.h1`
   font-family: "Fira Mono", monospace;
   font-size: 32px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-
-  @media (max-width: 600px) {
-    font-size: 24px;
-  }
 `;
 
 const RefreshButton = styled.button`
   background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -66,28 +56,20 @@ const RefreshButton = styled.button`
   &:active {
     transform: scale(0.95) rotate(90deg);
   }
-
-  @media (max-width: 600px) {
-    width: 36px;
-    height: 36px;
-  }
 `;
 
 const ContentWrapper = styled.div`
   background: white;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 24px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
-  overflow: hidden;
-
-  @media (max-width: 600px) {
-    padding: 12px;
-    border-radius: 8px;
-  }
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 `;
 
 function LeaderboardPage() {
